@@ -63,10 +63,6 @@ function createPlayer(){
 }
 
 const gameController = (function (){
-    const startGame = () => {
-
-    };
-
     const playTurn = () => {
         let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
         playerMove--;
@@ -98,6 +94,8 @@ const gameController = (function (){
 
     //Should return T/F
     const checkWin = () => {
+
+
         return;
     };
 
