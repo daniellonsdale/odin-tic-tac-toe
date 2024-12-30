@@ -94,7 +94,24 @@ const gameController = (function (){
 
     //Should return T/F
     const checkWin = () => {
-
+        const xWinHorOne =      ['x','x','x',
+                                'e','e','e',
+                                'e','e','e'];
+        const xWinHorTwo =      ['e','e','e',
+                                'x','x','x',
+                                'e','e','e'];
+        const xWinHorThree =     ['e','e','e',
+                                'e','e','e',
+                                'x','x','x'];
+        const oWinHorOne =      ['o','o','o',
+                                'e','e','e',
+                                'e','e','e'];
+        const oWinHorTwo =      ['e','e','e',
+                                'o','o','o',
+                                'e','e','e'];
+        const oWinHorThree =     ['e','e','e',
+                                'e','e','e',
+                                'o','o','o'];
 
         return;
     };
