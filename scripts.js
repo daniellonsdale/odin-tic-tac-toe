@@ -50,9 +50,25 @@ function createPlayer(name){
 }
 
 const gameController = (function (){
+    const playerTurn = '';
+    const getPlayerTurn = () => {
+        return playerTurn;
+    };
+    const togglePlayerTurn = () => {
+        if (playerTurn === ''){
+            playerTurn = playerOne.playerPiece;
+        }else if(playerTurn === playerOne.playerPiece){
+            playerTurn = playerTwo.playerPiece;
+        }else if(playerTurn === playerTwo.playerPiece){
+            playerTurn = playerOne.playerPiece;
+        }else{
+            console.log('An error has occured when toggling player turn wihtin the gameController');
+        }
+    };
     
 }());
 
+//allow players to choose name via prompts
 const playerOne = createPlayer('Player one');
 gameBoard.addPlayer(playerOne);
 const playerTwo = createPlayer('Player two');
