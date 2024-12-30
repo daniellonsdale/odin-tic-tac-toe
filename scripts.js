@@ -146,12 +146,16 @@ const gameController = (function (){
 
         let gameBoardStateMapX = gameBoard.getGameBoardState().map((x) => {
             if (x !== 'x'){
-                x = 'e';
+                return x = 'e';
+            }else{
+                return x = 'x';
             }
         });
         let gameBoardStateMapO = gameBoard.getGameBoardState().map((x) => {
             if (x !== 'o'){
-                x = 'e';
+                return x = 'e';
+            }else{
+                return x = 'o';
             }
         });
 
