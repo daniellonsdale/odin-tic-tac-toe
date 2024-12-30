@@ -48,7 +48,7 @@ function createPlayer(){
     const playerPiece = '';
 
     const isTurn = false;
-    const getPlayerTurn = () => {
+    const isPlayerTurn = () => {
         return isTurn;
     };
     const togglePlayerTurn = () => {
@@ -59,13 +59,23 @@ function createPlayer(){
         }
     };
 
-    return {getPlayerName, playerPiece, getPlayerTurn, togglePlayerTurn};
+    return {getPlayerName, playerPiece, isPlayerTurn, togglePlayerTurn};
 }
 
 const gameController = (function (){
     const playTurn = (index) => {
-
+        if (gameBoard.getPlayers()[0].isPlayerTurn()){
+            alterGameBoardState(index, gameBoard.getPlayers()[0].playerPiece);
+            gameController.checkWin();
+        }else{
+            alterGameBoardState(index, gameBoard.getPlayers()[1].playerPiece);
+            gameController.checkWin();
+        }
     }
+
+    const checkWin = () => {
+        
+    };
 
     return {playTurn};
 }());
