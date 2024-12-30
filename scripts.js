@@ -64,7 +64,8 @@ function createPlayer(){
 
 const gameController = (function (){
     const playTurn = () => {
-        let playerMove = parseInt(prompt('Where would you like to place your piece (0-8)'));
+        let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
+        playerMove--;
         if (gameBoard.getGameBoardState()[playerMove] === 'e'){
             if (gameBoard.getPlayers()[0].isPlayerTurn()){
                 gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
