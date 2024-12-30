@@ -38,8 +38,8 @@ const gameBoard = (function (){
     return {getGameBoardState, getPlayers, addPlayer, alterGameBoardState};
 })();
 
-function createPlayer(name){
-    const playerName = name;
+function createPlayer(){
+    const playerName = prompt('Choose your name');
     const getPlayerName = () => {
         return playerName;
     };
@@ -65,11 +65,10 @@ const gameController = (function (){
             console.log('An error has occured when toggling player turn wihtin the gameController');
         }
     };
-    
+
 }());
 
-//allow players to choose name via prompts
-const playerOne = createPlayer('Player one');
+const playerOne = createPlayer();
 gameBoard.addPlayer(playerOne);
-const playerTwo = createPlayer('Player two');
+const playerTwo = createPlayer();
 gameBoard.addPlayer(playerTwo);
