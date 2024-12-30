@@ -92,7 +92,6 @@ const gameController = (function (){
         }
     }
 
-    //Should return T/F
     const checkWin = () => {
         const xWinHorOne =      ['x','x','x',
                                 'e','e','e',
@@ -159,3 +158,4 @@ const playerOne = createPlayer();
 gameBoard.addPlayer(playerOne);
 const playerTwo = createPlayer();
 gameBoard.addPlayer(playerTwo);
+gameController.playTurn();
