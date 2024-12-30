@@ -16,6 +16,7 @@ const gameBoard = (function (){
             let playerChoice = prompt("Choose your piece: x or o");
             console.log(`Player one will be ${playerChoice}`);
             player.playerPiece = playerChoice;
+            player.togglePlayerTurn();
         }else if(players.length === 1 && players[0].playerPiece === 'x'){
             console.log('Player two will be o')
             player.playerPiece = 'o';
@@ -46,26 +47,27 @@ function createPlayer(){
 
     const playerPiece = '';
 
-    return {getPlayerName, playerPiece};
-}
-
-const gameController = (function (){
-    const playerTurn = '';
+    const isTurn = false;
     const getPlayerTurn = () => {
-        return playerTurn;
+        return isTurn;
     };
     const togglePlayerTurn = () => {
-        if (playerTurn === ''){
-            playerTurn = playerOne.playerPiece;
-        }else if(playerTurn === playerOne.playerPiece){
-            playerTurn = playerTwo.playerPiece;
-        }else if(playerTurn === playerTwo.playerPiece){
-            playerTurn = playerOne.playerPiece;
+        if (isTurn){
+            isTurn = false;
         }else{
-            console.log('An error has occured when toggling player turn wihtin the gameController');
+            isTurn = true;
         }
     };
 
+    return {getPlayerName, playerPiece, getPlayerTurn, togglePlayerTurn};
+}
+
+const gameController = (function (){
+    const playTurn = (index) => {
+
+    }
+
+    return {playTurn};
 }());
 
 const playerOne = createPlayer();
