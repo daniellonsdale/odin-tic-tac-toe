@@ -103,7 +103,7 @@ const gameController = (function (){
         const xWinHorThree =     ['e','e','e',
                                 'e','e','e',
                                 'x','x','x'];
-        /* const oWinHorOne =      ['o','o','o',
+        const oWinHorOne =      ['o','o','o',
                                 'e','e','e',
                                 'e','e','e'];
         const oWinHorTwo =      ['e','e','e',
@@ -111,7 +111,7 @@ const gameController = (function (){
                                 'e','e','e'];
         const oWinHorThree =     ['e','e','e',
                                 'e','e','e',
-                                'o','o','o']; */
+                                'o','o','o'];
         const xWinVertOne =      ['x','e','e',
                                 'x','e','e',
                                 'x','e','e'];
@@ -121,7 +121,7 @@ const gameController = (function (){
         const xWinVertThree =     ['e','e','x',
                                 'e','e','x',
                                 'e','e','x'];
-        /* const oWinVertOne =      ['o','e','e',
+        const oWinVertOne =      ['o','e','e',
                                 'o','e','e',
                                 'o','e','e'];
         const oWinVertTwo =      ['e','o','e',
@@ -129,24 +129,35 @@ const gameController = (function (){
                                 'e','o','e'];
         const oWinVertThree =     ['e','e','o',
                                 'e','e','o',
-                                'e','e','o']; */
+                                'e','e','o'];
         const xWinDiagOne =      ['x','e','e',
                                 'e','x','e',
                                 'e','e','x'];
         const xWinDiagTwo =      ['e','e','x',
                                 'e','x','e',
                                 'x','e','e'];
-       /*  const oWinDiagOne =      ['o','e','e', */
-       /*                          'e','o','e', */
-       /*                          'e','e','o']; */
-       /*  const oWinDiagTwo =      ['e','e','o', */
-       /*                          'e','o','e', */
-       /*                          'o','e','e']; */
-        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, /* oWinHorOne, oWinHorTwo, oWinHorThree, */ xWinVertOne, xWinVertTwo, xWinVertThree, /* oWinVertOne, oWinVertTwo, oWinVertThree, */ xWinDiagOne, xWinDiagTwo, /* oWinDiagOne, oWinDiagTwo */];
+        const oWinDiagOne =      ['o','e','e',
+                                'e','o','e',
+                                'e','e','o'];
+        const oWinDiagTwo =      ['e','e','o',
+                                'e','o','e',
+                                'o','e','e'];
+        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo];
+
+        let gameBoardStateMapX = gameBoard.getGameBoardState().map((x) => {
+            if (x !== 'x'){
+                x = 'e';
+            }
+        });
+        let gameBoardStateMapO = gameBoard.getGameBoardState().map((x) => {
+            if (x !== 'o'){
+                x = 'e';
+            }
+        });
 
         for (let i in winConditions){
-            if(winConditions[i].toString() === gameBoard.getGameBoardState().toString()){
-                return true;
+            if(winConditions[i].toString() === gameBoardStateMapX.toString() || winConditions[i].toString() === gameBoardStateMapO.toString()){
+                 return true;
             }
         }
         return false;
@@ -155,8 +166,8 @@ const gameController = (function (){
     return {playTurn, checkWin};
 }());
 
-const playerOne = createPlayer();
+/* const playerOne = createPlayer();
 gameBoard.addPlayer(playerOne);
 const playerTwo = createPlayer();
 gameBoard.addPlayer(playerTwo);
-gameController.playTurn();
+gameController.playTurn(); */
