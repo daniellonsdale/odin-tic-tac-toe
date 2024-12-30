@@ -28,5 +28,7 @@ function createPlayer(name){
         return playerName;
     };
 
-    return {getPlayerName};
+    const playerPiece = '';
+
+    return {getPlayerName, playerPiece};
 }
