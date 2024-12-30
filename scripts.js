@@ -47,7 +47,7 @@ function createPlayer(){
 
     const playerPiece = '';
 
-    const isTurn = false;
+    let isTurn = false;
     const isPlayerTurn = () => {
         return isTurn;
     };
@@ -63,21 +63,22 @@ function createPlayer(){
 }
 
 const gameController = (function (){
-    const playTurn = (index) => {
+    const playTurn = () => {
+        let playerMove = parseInt(prompt('Where would you like to place your piece (0-8)'));
         if (gameBoard.getPlayers()[0].isPlayerTurn()){
-            alterGameBoardState(index, gameBoard.getPlayers()[0].playerPiece);
+            gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
             gameController.checkWin();
         }else{
-            alterGameBoardState(index, gameBoard.getPlayers()[1].playerPiece);
+            gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
             gameController.checkWin();
         }
     }
 
     const checkWin = () => {
-        
+        return;
     };
 
-    return {playTurn};
+    return {playTurn, checkWin};
 }());
 
 const playerOne = createPlayer();
