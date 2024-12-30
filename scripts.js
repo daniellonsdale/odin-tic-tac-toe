@@ -142,6 +142,9 @@ const gameController = (function (){
         const oWinDiagTwo =      ['e','e','o',
                                 'e','o','e',
                                 'o','e','e'];
+        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo];
+
+
         return;
     };
 
