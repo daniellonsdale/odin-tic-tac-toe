@@ -5,6 +5,9 @@ const gameBoard = (function (){
     const getGameBoardState = () => {
         return gameBoardState;
     };
+    const alterGameBoardState = (index, newPiece) => {
+        gameBoardState[index] = newPiece;
+    };
 
     const players = [];
     const addPlayer = (player) => {
@@ -32,7 +35,7 @@ const gameBoard = (function (){
         return players;
     };
     
-    return {getGameBoardState, getPlayers, addPlayer};
+    return {getGameBoardState, getPlayers, addPlayer, alterGameBoardState};
 })();
 
 function createPlayer(name){
