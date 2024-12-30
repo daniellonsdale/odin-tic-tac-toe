@@ -144,8 +144,12 @@ const gameController = (function (){
                                 'o','e','e'];
         const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo];
 
-
-        return;
+        for (let i in winConditions){
+            if(winConditions[i].toString() === gameBoard.getGameBoardState().toString()){
+                return true;
+            }
+        }
+        return false;
     };
 
     return {playTurn, checkWin};
