@@ -49,6 +49,10 @@ function createPlayer(name){
     return {getPlayerName, playerPiece};
 }
 
+const gameController = (function (){
+    
+}());
+
 const playerOne = createPlayer('Player one');
 gameBoard.addPlayer(playerOne);
 const playerTwo = createPlayer('Player two');
