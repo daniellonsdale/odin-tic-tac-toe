@@ -63,16 +63,32 @@ function createPlayer(){
 }
 
 const gameController = (function (){
+    const startGame = () => {
+
+    };
+
     const playTurn = () => {
         let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
         playerMove--;
         if (gameBoard.getGameBoardState()[playerMove] === 'e'){
             if (gameBoard.getPlayers()[0].isPlayerTurn()){
                 gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
-                gameController.checkWin();
+                if(gameController.checkWin()){
+                    console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
+                }else{
+                    gameBoard.getPlayers()[0].togglePlayerTurn();
+                    gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameController.playTurn();
+                }
             }else{
                 gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
-                gameController.checkWin();
+                if(gameController.checkWin()){
+                    console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
+                }else{
+                    gameBoard.getPlayers()[0].togglePlayerTurn();
+                    gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameController.playTurn();
+                }
             }
         }else{
             console.log('That place is already taken. Please try again');
@@ -80,6 +96,7 @@ const gameController = (function (){
         }
     }
 
+    //Should return T/F
     const checkWin = () => {
         return;
     };
