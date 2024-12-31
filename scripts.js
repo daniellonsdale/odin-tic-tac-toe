@@ -90,7 +90,6 @@ const gameController = (function (){
             console.log('That place is already taken. Please try again');
             gameController.playTurn();
         }
-        return;
     }
 
     const checkWin = () => {
