@@ -64,7 +64,7 @@ function createPlayer(){
 
 const gameController = (function (){
     const playTurn = () => {
-        if (gameBoard.getGameBoardState.toString().includes('e')){
+        if (gameBoard.getGameBoardState().toString().includes('e')){
             let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
             playerMove--;
             if (gameBoard.getGameBoardState()[playerMove] === 'e'){
@@ -94,7 +94,7 @@ const gameController = (function (){
         }else{
             console.log('The game is a draw! Better luck next time');
         }
-        
+        return;
     }
 
     const checkWin = () => {
