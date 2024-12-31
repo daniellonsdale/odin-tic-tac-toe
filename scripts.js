@@ -16,8 +16,8 @@ inputForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         let formData = new FormData(inputForm);
-        playerOne = createPlayer(formData.get('#player-one-name-input'));
-        playerTwo = createPlayer(formData.get('#player-two-name-input'));
+        playerOne = createPlayer(formData.get('player-one-name-input'));
+        playerTwo = createPlayer(formData.get('player-two-name-input'));
 
         inputDialog.close();
         inputForm.reset();
