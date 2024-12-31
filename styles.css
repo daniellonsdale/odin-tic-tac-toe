@@ -78,6 +78,11 @@ body{
     font-family: 'schoolbellregular', 'Arial', sans-serif;
 }
 
+.game-container .game-box:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.022);
+}
+
 dialog{
     position: fixed;
     top: 50%;
