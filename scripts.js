@@ -64,32 +64,37 @@ function createPlayer(){
 
 const gameController = (function (){
     const playTurn = () => {
-        let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
-        playerMove--;
-        if (gameBoard.getGameBoardState()[playerMove] === 'e'){
-            if (gameBoard.getPlayers()[0].isPlayerTurn()){
-                gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
-                if(gameController.checkWin()){
-                    console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
+        if (gameBoard.getGameBoardState.toString().includes('e')){
+            let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
+            playerMove--;
+            if (gameBoard.getGameBoardState()[playerMove] === 'e'){
+                if (gameBoard.getPlayers()[0].isPlayerTurn()){
+                    gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
+                    if(gameController.checkWin()){
+                        console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
+                    }else{
+                        gameBoard.getPlayers()[0].togglePlayerTurn();
+                        gameBoard.getPlayers()[1].togglePlayerTurn();
+                        gameController.playTurn();
+                    }
                 }else{
-                    gameBoard.getPlayers()[0].togglePlayerTurn();
-                    gameBoard.getPlayers()[1].togglePlayerTurn();
-                    gameController.playTurn();
+                    gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
+                    if(gameController.checkWin()){
+                        console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
+                    }else{
+                        gameBoard.getPlayers()[0].togglePlayerTurn();
+                        gameBoard.getPlayers()[1].togglePlayerTurn();
+                        gameController.playTurn();
+                    }
                 }
             }else{
-                gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
-                if(gameController.checkWin()){
-                    console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
-                }else{
-                    gameBoard.getPlayers()[0].togglePlayerTurn();
-                    gameBoard.getPlayers()[1].togglePlayerTurn();
-                    gameController.playTurn();
-                }
+                console.log('That place is already taken. Please try again');
+                gameController.playTurn();
             }
         }else{
-            console.log('That place is already taken. Please try again');
-            gameController.playTurn();
+            console.log('The game is a draw! Better luck next time');
         }
+        
     }
 
     const checkWin = () => {
