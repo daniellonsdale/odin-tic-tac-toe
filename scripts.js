@@ -3,6 +3,8 @@ const formSubmitBtn = document.querySelector('.submit-button');
 const inputForm = document.querySelector('.input-form');
 const playerOneName = document.querySelector('.player-one-name');
 const playerTwoName = document.querySelector('.player-two-name');
+const turnIndicator = document.querySelector('.turn-indicator');
+const gameContainer = document.querySelector('.game-container');
 let playerOne;
 let playerTwo;
 
@@ -29,6 +31,8 @@ inputForm.addEventListener('submit', (e) => {
 
         inputDialog.close();
         inputForm.reset();
+
+        gameController.playTurn();
     }
 });
 
@@ -100,36 +104,55 @@ function createPlayer(name){
 }
 
 const gameController = (function (){
-    const playTurn = () => {
-        if (gameBoard.getGameBoardState().toString().includes('e')){
-            let playerMove = parseInt(prompt('Where would you like to place your piece (1-9)'));
-            playerMove--;
-            if (gameBoard.getGameBoardState()[playerMove] === 'e'){
-                if (gameBoard.getPlayers()[0].isPlayerTurn()){
-                    gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
-                    if(gameController.checkWin()){
-                        console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
-                    }else{
-                        gameBoard.getPlayers()[0].togglePlayerTurn();
-                        gameBoard.getPlayers()[1].togglePlayerTurn();
-                        gameController.playTurn();
-                    }
+    function handleClick(e){
+        playerMove = parseInt(e.target.id);
+        if (gameBoard.getGameBoardState()[playerMove] === 'e'){
+            if (gameBoard.getPlayers()[0].isPlayerTurn()){
+                gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
+                document.getElementById(`${playerMove}`).textContent = gameBoard.getPlayers()[0].playerPiece.toUpperCase();
+                if(gameController.checkWin()){
+                    console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
+                    turnIndicator.textContent = `Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`;
+                    gameContainer.removeEventListener('click', handleClick);
+                    return;
                 }else{
-                    gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
-                    if(gameController.checkWin()){
-                        console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
-                    }else{
-                        gameBoard.getPlayers()[0].togglePlayerTurn();
-                        gameBoard.getPlayers()[1].togglePlayerTurn();
-                        gameController.playTurn();
-                    }
+                    gameBoard.getPlayers()[0].togglePlayerTurn();
+                    gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameController.playTurn();
                 }
             }else{
-                console.log('That place is already taken. Please try again');
-                gameController.playTurn();
+                gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
+                document.getElementById(`${playerMove}`).textContent = gameBoard.getPlayers()[1].playerPiece.toUpperCase();
+                if(gameController.checkWin()){
+                    console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
+                    turnIndicator.textContent = `Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`;
+                    gameContainer.removeEventListener('click', handleClick);
+                    return;
+                }else{
+                    gameBoard.getPlayers()[0].togglePlayerTurn();
+                    gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameController.playTurn();
+                }
             }
         }else{
-            console.log('The game is a draw! Better luck next time');
+            turnIndicator.textContent = 'That place is already taken. Please try again';
+            setTimeout(gameController.playTurn(), 3000);
+        }
+    }
+
+    const playTurn = () => {
+        if (gameBoard.getGameBoardState().toString().includes('e')){
+            let currentPlayer;
+            if (playerOne.isPlayerTurn()){
+                currentPlayer = playerOne;
+            }else{
+                currentPlayer = playerTwo;
+            }
+            turnIndicator.textContent = `It's ${currentPlayer.getPlayerName()}'s turn`;
+            let playerMove;
+            gameContainer.addEventListener('click', handleClick);
+        }else{
+            turnIndicator.textContent = 'The game is a draw! Better luck next time';
         }
         return;
     }
