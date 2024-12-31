@@ -17,7 +17,7 @@ body{
 
 .main-content{
     display: grid;
-    grid-template-columns: 40vw 15vw;
+    grid-template-columns: 40vw 25vw;
     grid-template-rows: 10vh 40vw;
 }
 
@@ -60,4 +60,11 @@ body{
 
 .game-container .bottom-border{
     border-bottom: 1px solid black;
+}
+
+.game-container .game-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10vw;
 }
