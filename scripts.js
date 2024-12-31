@@ -1,7 +1,24 @@
 const dialog = document.querySelector('dialog');
+const formSubmitBtn = document.querySelector('.submit-button');
+const inputForm = document.querySelector('.input-form');
+let playerOne;
+let playerTwo;
 
 window.addEventListener('load', () =>{
     dialog.showModal();
+});
+
+formSubmitBtn.addEventListener('click', (e) => {
+    let playerOneInputValidity = document.querySelector('player-one-name-input').reportValidity();
+    let playerTwoInputValidity = document.querySelector('player-two-name-input').reportValidity();
+
+    if(playerOneInputValidity && playerTwoInputValidity){
+        e.preventDefault();
+
+        let formData = new FormData(inputForm);
+        playerOne = createPlayer(formData.get('#player-one-name-input'));
+        playerTwo = createPlayer(formData.get('#player-two-name-input'));
+    }
 });
 
 const gameBoard = (function (){
@@ -45,8 +62,8 @@ const gameBoard = (function (){
     return {getGameBoardState, getPlayers, addPlayer, alterGameBoardState};
 })();
 
-function createPlayer(){
-    const playerName = prompt('Choose your name');
+function createPlayer(name){
+    const playerName = name;
     const getPlayerName = () => {
         return playerName;
     };
