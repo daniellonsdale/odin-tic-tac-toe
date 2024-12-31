@@ -18,6 +18,9 @@ inputForm.addEventListener('submit', (e) => {
         let formData = new FormData(inputForm);
         playerOne = createPlayer(formData.get('player-one-name-input'));
         playerTwo = createPlayer(formData.get('player-two-name-input'));
+        playerOne.playerPiece = 'x';
+        playerTwo.playerPiece = 'o';
+        gameBoard.addPlayers(playerOne, playerTwo);
 
         inputDialog.close();
         inputForm.reset();
@@ -36,9 +39,9 @@ const gameBoard = (function (){
     };
 
     const players = [];
-    const addPlayer = (player) => {
+    const addPlayers = (playerA, playerB) => {
         //Allow p1 (player one) to choose piece and assign remaining to p2
-        if(players.length === 0){
+        /* if(players.length === 0){
             let playerChoice = prompt("Choose your piece: x or o");
             console.log(`Player one will be ${playerChoice}`);
             player.playerPiece = playerChoice;
@@ -56,13 +59,16 @@ const gameBoard = (function (){
             console.log(`${player} added to ${players}`);
         }else{
             console.log(`Two players are already in the game`);
-        }
+        } */
+
+        players.push(playerA);
+        players.push(playerB);
     };
     const getPlayers = () => {
         return players;
     };
     
-    return {getGameBoardState, getPlayers, addPlayer, alterGameBoardState};
+    return {getGameBoardState, getPlayers, addPlayers, alterGameBoardState};
 })();
 
 function createPlayer(name){
