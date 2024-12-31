@@ -1,3 +1,9 @@
+const dialog = document.querySelector('dialog');
+
+window.addEventListener('load', () =>{
+    dialog.showModal();
+});
+
 const gameBoard = (function (){
     const gameBoardState = ['e','e','e',
                             'e','e','e',
