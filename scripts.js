@@ -1,6 +1,8 @@
 const inputDialog = document.querySelector('.input-dialog');
 const formSubmitBtn = document.querySelector('.submit-button');
 const inputForm = document.querySelector('.input-form');
+const playerOneName = document.querySelector('.player-one-name');
+const playerTwoName = document.querySelector('.player-two-name');
 let playerOne;
 let playerTwo;
 
@@ -22,6 +24,8 @@ inputForm.addEventListener('submit', (e) => {
         playerTwo.playerPiece = 'o';
         playerOne.togglePlayerTurn();
         gameBoard.addPlayers(playerOne, playerTwo);
+        playerOneName.textContent = playerOne.getPlayerName();
+        playerTwoName.textContent = playerTwo.getPlayerName();
 
         inputDialog.close();
         inputForm.reset();
