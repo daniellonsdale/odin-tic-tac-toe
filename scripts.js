@@ -20,6 +20,7 @@ inputForm.addEventListener('submit', (e) => {
         playerTwo = createPlayer(formData.get('player-two-name-input'));
         playerOne.playerPiece = 'x';
         playerTwo.playerPiece = 'o';
+        playerOne.togglePlayerTurn();
         gameBoard.addPlayers(playerOne, playerTwo);
 
         inputDialog.close();
