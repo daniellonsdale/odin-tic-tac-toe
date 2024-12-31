@@ -25,8 +25,8 @@ body{
 
 .main-content{
     display: grid;
-    grid-template-columns: 40vw 25vw;
-    grid-template-rows: 10vh 40vw 5vh;
+    grid-template-columns: 35vw 25vw;
+    grid-template-rows: 10vh 35vw 5vh;
     gap: 16px;
 }
 
@@ -84,7 +84,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10vw;
+    font-size: 7vw;
     font-family: 'schoolbellregular', 'Arial', sans-serif;
 }
 
