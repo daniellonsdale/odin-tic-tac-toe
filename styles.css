@@ -12,3 +12,9 @@
     justify-content: center;
     align-items: center;
   }
+
+  .main-content{
+    display: grid;
+    grid-template-columns: 70vw 20vw;
+    grid-template-rows: 10vh 70vh;
+  }
