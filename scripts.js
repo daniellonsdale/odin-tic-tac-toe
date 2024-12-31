@@ -174,8 +174,8 @@ const gameController = (function (){
     return {playTurn, checkWin};
 }());
 
-const playerOne = createPlayer();
+/* const playerOne = createPlayer();
 gameBoard.addPlayer(playerOne);
 const playerTwo = createPlayer();
 gameBoard.addPlayer(playerTwo);
-gameController.playTurn();
+gameController.playTurn(); */
