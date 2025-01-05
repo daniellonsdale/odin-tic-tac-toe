@@ -80,7 +80,7 @@ const gameBoard = (function (){
     return {getGameBoardState, getPlayers, addPlayers, alterGameBoardState};
 })();
 
-function createPlayer(name){
+function createPlayer(name, color){
     const playerName = name;
     const getPlayerName = () => {
         return playerName;
@@ -100,7 +100,12 @@ function createPlayer(name){
         }
     };
 
-    return {getPlayerName, playerPiece, isPlayerTurn, togglePlayerTurn};
+    const playerColor = color;
+    const getPlayerColor = () => {
+        return playerColor;
+    };
+
+    return {getPlayerName, playerPiece, isPlayerTurn, togglePlayerTurn, getPlayerColor};
 }
 
 const gameController = (function (){
