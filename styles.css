@@ -56,11 +56,11 @@ body{
     font-size: clamp(.15rem, 2vw + .3rem, 1.2rem);
 }
 
-.scorebox .player-one-score-box{
+.scorebox .player-one-name{
     color: var(--player-one-color);
 }
 
-.scorebox .player-two-score-box{
+.scorebox .player-two-name{
     color: var(--player-two-color);
 }
 
