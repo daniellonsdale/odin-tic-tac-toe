@@ -127,6 +127,7 @@ const gameController = (function (){
                 }else{
                     gameBoard.getPlayers()[0].togglePlayerTurn();
                     gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameContainer.removeEventListener('click', handleClick);
                     gameController.playTurn();
                 }
             }else{
@@ -141,6 +142,7 @@ const gameController = (function (){
                 }else{
                     gameBoard.getPlayers()[0].togglePlayerTurn();
                     gameBoard.getPlayers()[1].togglePlayerTurn();
+                    gameContainer.removeEventListener('click', handleClick);
                     gameController.playTurn();
                 }
             }
