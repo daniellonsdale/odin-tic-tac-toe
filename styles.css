@@ -6,6 +6,11 @@
     box-sizing: border-box;
 }
 
+:root{
+    --player-one-color: black;
+    --player-two-color: black;
+}
+
 @font-face {
     font-family: 'schoolbellregular';
     src: url('fonts/schoolbell-regular-webfont.woff2') format('woff2'),
@@ -49,6 +54,14 @@ body{
 
     text-align: center;
     font-size: clamp(.15rem, 2vw + .3rem, 1.2rem);
+}
+
+.scorebox .player-one-score-box{
+    color: var(--player-one-color);
+}
+
+.scorebox .player-two-score-box{
+    color: var(--player-two-color);
 }
 
 .main-content .game-container{
