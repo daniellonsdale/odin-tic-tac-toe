@@ -5,6 +5,7 @@ const playerOneName = document.querySelector('.player-one-name');
 const playerTwoName = document.querySelector('.player-two-name');
 const turnIndicator = document.querySelector('.turn-indicator');
 const gameContainer = document.querySelector('.game-container');
+const root = document.documentElement;
 let playerOne;
 let playerTwo;
 
@@ -20,14 +21,16 @@ inputForm.addEventListener('submit', (e) => {
         e.preventDefault();
 
         let formData = new FormData(inputForm);
-        playerOne = createPlayer(formData.get('player-one-name-input'));
-        playerTwo = createPlayer(formData.get('player-two-name-input'));
+        playerOne = createPlayer(formData.get('player-one-name-input'), formData.get('player-one-color-input'));
+        playerTwo = createPlayer(formData.get('player-two-name-input'), formData.get('player-two-color-input'));
         playerOne.playerPiece = 'x';
         playerTwo.playerPiece = 'o';
         playerOne.togglePlayerTurn();
         gameBoard.addPlayers(playerOne, playerTwo);
         playerOneName.textContent = playerOne.getPlayerName();
         playerTwoName.textContent = playerTwo.getPlayerName();
+        root.style.setProperty('--player-one-color', playerOne.getPlayerColor());
+        root.style.setProperty('--player-two-color', playerTwo.getPlayerColor());
 
         inputDialog.close();
         inputForm.reset();
@@ -115,6 +118,7 @@ const gameController = (function (){
             if (gameBoard.getPlayers()[0].isPlayerTurn()){
                 gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[0].playerPiece);
                 document.getElementById(`${playerMove}`).textContent = gameBoard.getPlayers()[0].playerPiece.toUpperCase();
+                document.getElementById(`${playerMove}`).style.color = playerOne.getPlayerColor();
                 if(gameController.checkWin()){
                     console.log(`Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`);
                     turnIndicator.textContent = `Congratulations! ${gameBoard.getPlayers()[0].getPlayerName()} won! Please refresh to play again`;
@@ -128,6 +132,7 @@ const gameController = (function (){
             }else{
                 gameBoard.alterGameBoardState(playerMove, gameBoard.getPlayers()[1].playerPiece);
                 document.getElementById(`${playerMove}`).textContent = gameBoard.getPlayers()[1].playerPiece.toUpperCase();
+                document.getElementById(`${playerMove}`).style.color = playerTwo.getPlayerColor();
                 if(gameController.checkWin()){
                     console.log(`Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`);
                     turnIndicator.textContent = `Congratulations! ${gameBoard.getPlayers()[1].getPlayerName()} won! Please refresh to play again`;
