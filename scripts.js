@@ -170,7 +170,7 @@ const gameController = (function (){
     }
 
     const checkWin = () => {
-        const xWinHorOne =      ['x','x','x',
+        /* const xWinHorOne =      ['x','x','x',
                                 'e','e','e',
                                 'e','e','e'];
         const xWinHorTwo =      ['e','e','e',
@@ -218,10 +218,10 @@ const gameController = (function (){
         const oWinDiagTwo =      ['e','e','o',
                                 'e','o','e',
                                 'o','e','e'];
-        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo];
+        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo]; */
 
         //need to fix winConditions so that player can win even with other of their pieces on the board
-        let gameBoardStateMapX = gameBoard.getGameBoardState().map((x) => {
+        /* let gameBoardStateMapX = gameBoard.getGameBoardState().map((x) => {
             if (x !== 'x'){
                 return x = 'e';
             }else{
@@ -241,7 +241,9 @@ const gameController = (function (){
                  return true;
             }
         }
-        return false;
+        return false; */
+
+        
     };
 
     return {playTurn, checkWin};
