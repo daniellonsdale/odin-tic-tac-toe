@@ -170,79 +170,6 @@ const gameController = (function (){
     }
 
     const checkWin = () => {
-        /* const xWinHorOne =      ['x','x','x',
-                                'e','e','e',
-                                'e','e','e'];
-        const xWinHorTwo =      ['e','e','e',
-                                'x','x','x',
-                                'e','e','e'];
-        const xWinHorThree =     ['e','e','e',
-                                'e','e','e',
-                                'x','x','x'];
-        const oWinHorOne =      ['o','o','o',
-                                'e','e','e',
-                                'e','e','e'];
-        const oWinHorTwo =      ['e','e','e',
-                                'o','o','o',
-                                'e','e','e'];
-        const oWinHorThree =     ['e','e','e',
-                                'e','e','e',
-                                'o','o','o'];
-        const xWinVertOne =      ['x','e','e',
-                                'x','e','e',
-                                'x','e','e'];
-        const xWinVertTwo =      ['e','x','e',
-                                'e','x','e',
-                                'e','x','e'];
-        const xWinVertThree =     ['e','e','x',
-                                'e','e','x',
-                                'e','e','x'];
-        const oWinVertOne =      ['o','e','e',
-                                'o','e','e',
-                                'o','e','e'];
-        const oWinVertTwo =      ['e','o','e',
-                                'e','o','e',
-                                'e','o','e'];
-        const oWinVertThree =     ['e','e','o',
-                                'e','e','o',
-                                'e','e','o'];
-        const xWinDiagOne =      ['x','e','e',
-                                'e','x','e',
-                                'e','e','x'];
-        const xWinDiagTwo =      ['e','e','x',
-                                'e','x','e',
-                                'x','e','e'];
-        const oWinDiagOne =      ['o','e','e',
-                                'e','o','e',
-                                'e','e','o'];
-        const oWinDiagTwo =      ['e','e','o',
-                                'e','o','e',
-                                'o','e','e'];
-        const winConditions = [xWinHorOne, xWinHorTwo, xWinHorThree, oWinHorOne, oWinHorTwo, oWinHorThree, xWinVertOne, xWinVertTwo, xWinVertThree, oWinVertOne, oWinVertTwo, oWinVertThree, xWinDiagOne, xWinDiagTwo, oWinDiagOne, oWinDiagTwo]; */
-
-        //need to fix winConditions so that player can win even with other of their pieces on the board
-        /* let gameBoardStateMapX = gameBoard.getGameBoardState().map((x) => {
-            if (x !== 'x'){
-                return x = 'e';
-            }else{
-                return x = 'x';
-            }
-        });
-        let gameBoardStateMapO = gameBoard.getGameBoardState().map((x) => {
-            if (x !== 'o'){
-                return x = 'e';
-            }else{
-                return x = 'o';
-            }
-        });
-
-        for (let i in winConditions){
-            if(winConditions[i].toString() === gameBoardStateMapX.toString() || winConditions[i].toString() === gameBoardStateMapO.toString()){
-                 return true;
-            }
-        }
-        return false; */
-
         const horWinA = [0, 1, 2];
         const horWinB = [3, 4, 5];
         const horWinC = [6, 7, 8];
@@ -269,9 +196,3 @@ const gameController = (function (){
 
     return {playTurn, checkWin};
 }());
-
-/* const playerOne = createPlayer();
-gameBoard.addPlayer(playerOne);
-const playerTwo = createPlayer();
-gameBoard.addPlayer(playerTwo);
-gameController.playTurn(); */
