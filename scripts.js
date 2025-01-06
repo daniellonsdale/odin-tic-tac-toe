@@ -243,7 +243,28 @@ const gameController = (function (){
         }
         return false; */
 
-        
+        const horWinA = [0, 1, 2];
+        const horWinB = [3, 4, 5];
+        const horWinC = [6, 7, 8];
+
+        const vertWinA = [0, 3, 6];
+        const vertWinB = [1, 4, 7];
+        const vertWinC = [2, 5, 8];
+
+        const diagWinA = [0, 4, 8];
+        const diagWinB = [2, 4, 6];
+
+        const winConditions = [horWinA, horWinB, horWinC, vertWinA, vertWinB, vertWinC, diagWinA, diagWinB];
+
+        for (let i in winConditions){
+            if (gameBoard.getGameBoardState()[winConditions[i][0]] === 'x' && gameBoard.getGameBoardState()[winConditions[i][1]] === 'x' && gameBoard.getGameBoardState()[winConditions[i][2]] === 'x'){
+                return true;
+            } else if (gameBoard.getGameBoardState()[winConditions[i][0]] === 'o' && gameBoard.getGameBoardState()[winConditions[i][1]] === 'o' && gameBoard.getGameBoardState()[winConditions[i][2]] === 'o'){
+                return true;
+            }
+        }
+
+        return false;
     };
 
     return {playTurn, checkWin};
